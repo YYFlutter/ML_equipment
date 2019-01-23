@@ -12,18 +12,12 @@ class EquipmentDialog extends StatefulWidget {
 class _EquipmentDialogState extends State<EquipmentDialog> {
   @override
   Widget build(BuildContext context) {
-    return SimpleDialog(
-        title: const Text('Select assignment'),
-        children: <Widget>[
-          SimpleDialogOption(
-            onPressed: () { print('a1'); },
-            child: const Text('Treasury department'),
+    return Dialog(
+        child: Container(
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height,
+            color: Color(0xFF2D2F33),
           ),
-          SimpleDialogOption(
-            onPressed: () { print('a2'); },
-            child: const Text('State department'),
-          ),
-        ],
       );
   }
 }

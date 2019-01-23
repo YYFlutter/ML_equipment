@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'dialog.dart';
+// import 'dialog.dart';
+import 'modalroute.dart';
 
 class ShowDialogButton extends StatefulWidget {
   @override
@@ -7,6 +8,10 @@ class ShowDialogButton extends StatefulWidget {
 }
 
 class _ShowDialogButtonState extends State<ShowDialogButton> {
+  void _showOverlay(BuildContext context) {
+    Navigator.of(context).push(TutorialOverlay());
+  }
+
   @override
   Widget build(BuildContext context) {
     return RaisedButton(
@@ -14,28 +19,7 @@ class _ShowDialogButtonState extends State<ShowDialogButton> {
       child: new Text(
         'test dialog'
       ),
-      onPressed: () {
-        showDialog(
-          context: context,
-          builder: (_) => AlertDialog(
-          title: new Text("Dialog Title"),
-          content: new Text("This is is a dialog"),
-          actions: <Widget>[
-            new FlatButton(
-              child: new Text("CANCEL"),
-              onPressed: () {
-                Navigator.pop(context);
-              },
-            ),
-            new FlatButton(
-              child: new Text("OK"),
-              onPressed: () {
-                Navigator.pop(context);
-              },
-            )
-          ])
-        );
-      }
+      onPressed: () => _showOverlay(context)
     );
   }
 }
