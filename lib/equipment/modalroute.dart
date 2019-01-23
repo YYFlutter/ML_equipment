@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'pageview.dart';
 
 class TutorialOverlay extends ModalRoute<void> {
   @override
@@ -30,7 +31,7 @@ class TutorialOverlay extends ModalRoute<void> {
       type: MaterialType.transparency,
       // make sure that the overlay content is not cut off
       child: SafeArea(
-        child: _buildOverlayContent(context),
+        child: EquipmentPageView(),
       ),
     );
   }
