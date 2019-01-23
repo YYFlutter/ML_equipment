@@ -14,8 +14,15 @@ class _EquipmentPageViewState extends State<EquipmentPageView> {
   @override
   Widget build(BuildContext context) {
     return PageView.builder(
+      controller: PageController(viewportFraction: 0.8),
       itemBuilder: (context, position) {
-        return EquipmentDetail();
+        return Padding(
+          padding: EdgeInsets.symmetric(
+            vertical: 0.0,
+            horizontal: 10.0,
+          ),
+          child: EquipmentDetail()
+        );
       },
       itemCount: 10,
     );

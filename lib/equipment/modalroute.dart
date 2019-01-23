@@ -31,7 +31,28 @@ class TutorialOverlay extends ModalRoute<void> {
       type: MaterialType.transparency,
       // make sure that the overlay content is not cut off
       child: SafeArea(
-        child: EquipmentPageView(),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            Container(
+              width: MediaQuery.of(context).size.width,
+              height: MediaQuery.of(context).size.height - 200.0,
+              child: EquipmentPageView(),
+            ),
+            ButtonTheme(
+              minWidth: 50.0,
+              child: RaisedButton(
+                color: Color(0xFF2a2e30),
+                child: new Text('X', style: TextStyle(color: Color(0xFFFFFFFF)),),
+                shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(30.0)),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+              )
+            )
+          ]
+        )
       ),
     );
   }
