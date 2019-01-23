@@ -22,7 +22,8 @@ class _EquipmentDetailState extends State<EquipmentDetail> {
             color: Color(0xFF2D2F33)
           ),
           RaisedButton(
-            child: new Text("CANCEL"),
+            child: new Text('X'),
+            shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(30.0)),
             onPressed: () {
               Navigator.pop(context);
             },
