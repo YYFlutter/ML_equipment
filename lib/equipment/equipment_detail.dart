@@ -19,14 +19,21 @@ class _EquipmentDetailState extends State<EquipmentDetail> {
             margin: EdgeInsets.only(top: 30.0),
             width: MediaQuery.of(context).size.width - 60,
             height: MediaQuery.of(context).size.height - 130,
-            color: Color(0xFF2D2F33)
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.all(Radius.circular(10.0)),
+              color: Color(0xFF2D2F33),
+            ),
           ),
-          RaisedButton(
-            child: new Text('X'),
-            shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(30.0)),
-            onPressed: () {
-              Navigator.pop(context);
-            },
+          ButtonTheme(
+            minWidth: 50.0,
+            child: RaisedButton(
+              color: Color(0xFF2a2e30),
+              child: new Text('X', style: TextStyle(color: Color(0xFFFFFFFF)),),
+              shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(30.0)),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            )
           )
         ],
       )
