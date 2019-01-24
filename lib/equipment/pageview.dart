@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'equipment_detail.dart';
+import 'equitment_detail/equipment_detail.dart';
 
 void main() => runApp(MaterialApp(
       home: EquipmentPageView(),
@@ -11,6 +11,7 @@ class EquipmentPageView extends StatefulWidget {
 }
 
 class _EquipmentPageViewState extends State<EquipmentPageView> {
+  final List _equipmentList = [3110, 3201, 3202];
   @override
   Widget build(BuildContext context) {
     return PageView.builder(
@@ -21,10 +22,10 @@ class _EquipmentPageViewState extends State<EquipmentPageView> {
             vertical: 0.0,
             horizontal: 10.0,
           ),
-          child: EquipmentDetail()
+          child: EquipmentDetail(equipmentId: _equipmentList[position])
         );
       },
-      itemCount: 10,
+      itemCount: _equipmentList.length,
     );
   }
 }

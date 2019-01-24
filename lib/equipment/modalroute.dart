@@ -37,7 +37,7 @@ class TutorialOverlay extends ModalRoute<void> {
           children: <Widget>[
             Container(
               width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height - 200.0,
+              height: MediaQuery.of(context).size.height - 100.0,
               child: EquipmentPageView(),
             ),
             ButtonTheme(
