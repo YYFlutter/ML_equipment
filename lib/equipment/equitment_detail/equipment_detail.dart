@@ -51,7 +51,7 @@ class _EquipmentDetailState extends State<EquipmentDetail> {
             vertical: 20.0,
             horizontal: 20.0,
           ),
-          child:Column(
+          child:ListView(
             children: <Widget>[
               EquipmentDetailTop(equipmentData: _equipmentData['data']),
               Container(
@@ -78,12 +78,12 @@ class _EquipmentDetailState extends State<EquipmentDetail> {
       return  Container(
         margin: EdgeInsets.only(top: 30.0),
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(10.0)),
+          borderRadius: BorderRadius.all(Radius.circular(4.0)),
           color: Color(0xFF2D2F33),
         ),
         child: Center(
           child:  CircularProgressIndicator(
-            valueColor: new AlwaysStoppedAnimation<Color>(Colors.white),
+            valueColor: new AlwaysStoppedAnimation<Color>(Colors.grey),
           ),
         ),
       );

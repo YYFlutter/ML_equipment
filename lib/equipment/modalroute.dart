@@ -7,7 +7,7 @@ class TutorialOverlay extends ModalRoute<void> {
   final List eqids;
 
   @override
-  Duration get transitionDuration => Duration(milliseconds: 500);
+  Duration get transitionDuration => Duration(milliseconds: 300);
 
   @override
   bool get opaque => false;
@@ -16,7 +16,7 @@ class TutorialOverlay extends ModalRoute<void> {
   bool get barrierDismissible => false;
 
   @override
-  Color get barrierColor => Colors.black.withOpacity(0.5);
+  Color get barrierColor => Colors.black.withOpacity(0.2);
 
   @override
   String get barrierLabel => null;

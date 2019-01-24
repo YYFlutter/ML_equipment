@@ -27,19 +27,25 @@ class _EquipmentDetailTreeState extends State<EquipmentDetailTree> {
   }
 
   // 装备图像
-  Widget equipMentUtil(Map equipMentData, int equipType) {
+  Widget equipMentUtil(Map equipMentData, int equipType, int brotherNum) {
     double coverSize = (equipType == 1 ? 40.0 : 28.0 );
     double fontSize = (equipType == 1 ? 10.0 : 8.0 );
     Widget nameText;
     if(equipType == 1){
-      nameText = Text(equipMentData['name'], style: TextStyle(color: Color(0xFFFFFFFF), fontSize: fontSize));
+      nameText = FittedBox(
+        fit: BoxFit.contain,
+        child: Text(equipMentData['name'], style: TextStyle(color: Color(0xFFFFFFFF), fontSize: fontSize))
+      );
     } else {
       List nameArray = equipMentData['name'].split(' ');
       List<Widget> nameTextChilds = [];
       for(int index = 0; index < nameArray.length; index++){
         nameTextChilds.add(
-          Text(nameArray[index], style: TextStyle(color: Color(0xFFFFFFFF), fontSize: fontSize))
-        );
+          FittedBox(
+            fit: BoxFit.contain,
+            child: Text(nameArray[index], style: TextStyle(color: Color(0xFFFFFFFF), fontSize: fontSize))
+          )
+        );  
       }
       nameText = Column(
         children: nameTextChilds,
@@ -60,14 +66,16 @@ class _EquipmentDetailTreeState extends State<EquipmentDetailTree> {
   }
 
   // 二级分支
-  Widget equipMentSecondUtil(Map equipMentData) {
+  Widget equipMentSecondUtil(Map equipMentData, int secondNum) {
+    double secondWidth = 180.0 / secondNum;
     List<Widget> thirdLine = [];
     if(equipMentData['materialList']!= null && equipMentData['materialList'].length > 0){
       for(int index = 0; index < equipMentData['materialList'].length; index++){
+        // 三级分支
         thirdLine.add(
           Container(
             margin: EdgeInsets.only(left: 6.0, right: 6.0),
-            child: equipMentUtil(equipMentData['materialList'][index], 2),
+            child: equipMentUtil(equipMentData['materialList'][index], 2, equipMentData['materialList'].length),
           )
         );
       }
@@ -79,8 +87,9 @@ class _EquipmentDetailTreeState extends State<EquipmentDetailTree> {
         child: Column(
           children: <Widget>[
             Container(
+              width: secondWidth,
               height: 60.0,
-              child: equipMentUtil(equipMentData, 1),
+              child: equipMentUtil(equipMentData, 1, 1),
             ),
             equipMentLine(44, thirdLine.length),
             Container(
@@ -95,8 +104,9 @@ class _EquipmentDetailTreeState extends State<EquipmentDetailTree> {
       );
     } else {
       return Container(
+        width: secondWidth,
         height: 175.0,
-        child: equipMentUtil(equipMentData, 1),
+        child: equipMentUtil(equipMentData, 1, 1),
       );
     }
   }
@@ -117,23 +127,28 @@ class _EquipmentDetailTreeState extends State<EquipmentDetailTree> {
         Positioned(
           top: 5.0,
           left: 0.0,
-          child: Container(
-            width: wTotalWidth,
-            height: 8.0,
-            child: Divider(
-              height: 8.0,
-              color: Color(0xFF4B4E51),
-            ),
-          )
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Container(
+                width: wTotalWidth,
+                height: 8.0,
+                child: Divider(
+                  height: 8.0,
+                  color: Color(0xFF4B4E51),
+                ),
+              )
+            ],
+          ),
         ),
       );
       lineArray.add(Positioned(
-        top: 8.0,
+        top: 7.0,
         left: 0,
         child: Text('|', style: TextStyle(color: Color(0xFF4B4E51), fontSize: 10.0))
       ));
       lineArray.add(Positioned(
-        top: 8.0,
+        top: 7.0,
         right: 0,
         child: Text('|', style: TextStyle(color: Color(0xFF4B4E51), fontSize: 10.0))
       ));
@@ -154,12 +169,12 @@ class _EquipmentDetailTreeState extends State<EquipmentDetailTree> {
     tiles.add(
       Container(
         height: 60.0,
-        child: equipMentUtil(_curEquipment, 1)
+        child: equipMentUtil(_curEquipment, 1, 3)
       )
     );
 
     tiles.add(
-      equipMentLine(215.0, _materialList.length)
+      equipMentLine(170.0, _materialList.length)
     );
 
     if(_materialList!= null){
@@ -167,7 +182,7 @@ class _EquipmentDetailTreeState extends State<EquipmentDetailTree> {
       for(var index = 0; index < _materialList.length; index++){
         // 第二层
         lineSecond.add(
-          equipMentSecondUtil(_materialList[index])
+          equipMentSecondUtil(_materialList[index], _materialList.length)
         );
       }
       tiles.add(

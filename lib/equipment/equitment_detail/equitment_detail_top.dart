@@ -32,7 +32,17 @@ class _EquipmentDetailTopState extends State<EquipmentDetailTop> {
                 margin: EdgeInsets.only(bottom: 4.0),
                 child: Row(
                   children: <Widget>[
-                    Text(super.widget.equipmentData['name'], style: TextStyle(color: Color(0xFFFFFFFF), fontSize: 15.0)),
+                    Container(
+                      width: 105.0,
+                      child: FittedBox(
+                        fit: BoxFit.contain,
+                        child: Text(
+                          super.widget.equipmentData['name'], 
+                          style: TextStyle(color: Color(0xFFFFFFFF), fontSize: 15.0),
+                          overflow: TextOverflow.ellipsis
+                        )
+                      )
+                    ),
                     Container(
                       margin: const EdgeInsets.only(left: 10.0),
                       padding: const EdgeInsets.all(2.0),
