@@ -21,22 +21,38 @@ class _EquipmentDetailTopState extends State<EquipmentDetailTop> {
       ),
       child: Row(
         children: <Widget>[
-          Image.network(super.widget.equipmentData['image'],width: 44.0, height: 44.0,),
+          Container(
+            margin: EdgeInsets.only(right: 10.0),
+            child: Image.network(super.widget.equipmentData['image'],width: 44.0, height: 44.0),
+          ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Row(
                 children: <Widget>[
                   Text(super.widget.equipmentData['name'], style: TextStyle(color: Color(0xFFFFFFFF), fontSize: 15.0)),
-                  Text(super.widget.equipmentData['category'], style: TextStyle(color: Color(0xFFFF5F49), fontSize: 10.0))
+                  Container(
+                    margin: const EdgeInsets.only(left: 10.0),
+                    padding: const EdgeInsets.all(2.0),
+                    decoration: new BoxDecoration(
+                      border: new Border.all(color: Color(0xFFFF5F49))
+                    ),
+                    child: Text(super.widget.equipmentData['category'], style: TextStyle(color: Color(0xFFFF5F49), fontSize: 10.0)),
+                  )
                 ],
               ),
               Row(
                 children: <Widget>[
-                  Text('Price:', style: TextStyle(color: Color(0xFFFFFFFF), fontSize: 12.0)),
-                  Text(super.widget.equipmentData['cost'].toString(), style: TextStyle(color: Color(0xFFFFFFFF), fontSize: 12.0))
+                  Opacity(
+                    opacity: 0.6,
+                    child: Text('Price:', style: TextStyle(color: Color(0xFFFFFFFF), fontSize: 12.0)),
+                  ),
+                  Opacity(
+                    opacity: 0.6,
+                    child: Text(super.widget.equipmentData['cost'].toString(), style: TextStyle(color: Color(0xFFFFFFFF), fontSize: 12.0)),
+                  )
                 ]
-              )
+              ),
             ],
           )
         ]

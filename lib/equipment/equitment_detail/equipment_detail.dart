@@ -3,6 +3,7 @@ import 'package:http/http.dart' as http;
 import 'dart:async';
 import 'dart:convert';
 import 'equitment_detail_top.dart';
+import 'equipment_detail_desc.dart';
 
 class EquipmentDetail extends StatefulWidget {
   EquipmentDetail({Key key, this.equipmentId}): super(key: key);
@@ -52,7 +53,21 @@ class _EquipmentDetailState extends State<EquipmentDetail> {
           child:Column(
             children: <Widget>[
               EquipmentDetailTop(equipmentData: _equipmentData['data']),
-              Divider()
+              Container(
+                margin: EdgeInsets.only(top: 10.0, bottom: 10.0),
+                child: Divider(
+                  color: Color(0xFF25272A),
+                  height: 5.0,
+                ),
+              ),
+              EquipmentDetailDesc(equipmentData: _equipmentData['data']),
+              Container(
+                margin: EdgeInsets.only(top: 10.0, bottom: 10.0),
+                child: Divider(
+                  color: Color(0xFF25272A),
+                  height: 5.0,
+                ),
+              ),
             ],
           ),
         )
