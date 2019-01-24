@@ -50,8 +50,11 @@ class TutorialOverlay extends ModalRoute<void> {
               minWidth: 50.0,
               child: RaisedButton(
                 color: Color(0xFF2a2e30),
-                child: new Text('X', style: TextStyle(color: Color(0xFFFFFFFF)),),
-                shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(30.0)),
+                child: Opacity(
+                  opacity: 0.6,
+                  child: Icon(Icons.close, color: Color(0xFFFFFFFF)),
+                ),
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30.0)),
                 onPressed: () {
                   Navigator.pop(context);
                 },
