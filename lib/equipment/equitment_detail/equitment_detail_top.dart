@@ -47,7 +47,8 @@ class _EquipmentDetailTopState extends State<EquipmentDetailTop> {
                       margin: const EdgeInsets.only(left: 10.0),
                       padding: const EdgeInsets.all(2.0),
                       decoration: new BoxDecoration(
-                        border: new Border.all(color: Color(0xFFFF5F49))
+                        border: new Border.all(color: Color(0xFFFF5F49)),
+                        borderRadius: BorderRadius.all(Radius.circular(4.0)),
                       ),
                       child: Text(super.widget.equipmentData['category'], style: TextStyle(color: Color(0xFFFF5F49), fontSize: 10.0)),
                     )
