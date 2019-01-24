@@ -20,8 +20,7 @@ class _EquipmentDetailDescState extends State<EquipmentDetailDesc> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Text(super.widget.equipmentData['statusEffect'], style: TextStyle(color: Color(0xFFFFFFFF), fontSize: 14.0)),
-          Text('unique: ${super.widget.equipmentData['unique']}', style: TextStyle(color: Color(0xFFFFFFFF), fontSize: 14.0)),
-          Text(super.widget.equipmentData['uniquePassive'], style: TextStyle(color: Color(0xFFFFFFFF), fontSize: 14.0))
+          Text('unique: ${super.widget.equipmentData['unique']}, ${super.widget.equipmentData['uniquePassive']}', style: TextStyle(color: Color(0xFFFFFFFF), fontSize: 14.0))
         ]
       )
     );

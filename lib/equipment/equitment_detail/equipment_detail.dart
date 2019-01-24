@@ -55,7 +55,7 @@ class _EquipmentDetailState extends State<EquipmentDetail> {
             children: <Widget>[
               EquipmentDetailTop(equipmentData: _equipmentData['data']),
               Container(
-                margin: EdgeInsets.only(top: 10.0, bottom: 10.0),
+                margin: EdgeInsets.only(top: 8.0, bottom: 8.0),
                 child: Divider(
                   color: Color(0xFF25272A),
                   height: 6.0,
@@ -63,7 +63,7 @@ class _EquipmentDetailState extends State<EquipmentDetail> {
               ),
               EquipmentDetailDesc(equipmentData: _equipmentData['data']),
               Container(
-                margin: EdgeInsets.only(top: 10.0, bottom: 10.0),
+                margin: EdgeInsets.only(top: 8.0, bottom: 8.0),
                 child: Divider(
                   color: Color(0xFF25272A),
                   height: 6.0,
