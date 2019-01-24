@@ -1,6 +1,15 @@
-# pageview
+# ml equipment detail
 
-A new Flutter project.
+## pageview
+![Alt have a look](https://www.jeremypay.com/json/ml_epm_detial2.gif)
+
+## how to use?
+```
+Navigator.of(context).push(TutorialOverlay(
+    eqid: 3206, // the detail you need to show first
+    eqids: [3110, 3206, 3201, 3202]  // other detail that can scroll to show
+));
+```
 
 ## Getting Started
 
