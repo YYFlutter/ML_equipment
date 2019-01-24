@@ -28,18 +28,21 @@ class _EquipmentDetailTopState extends State<EquipmentDetailTop> {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              Row(
-                children: <Widget>[
-                  Text(super.widget.equipmentData['name'], style: TextStyle(color: Color(0xFFFFFFFF), fontSize: 15.0)),
-                  Container(
-                    margin: const EdgeInsets.only(left: 10.0),
-                    padding: const EdgeInsets.all(2.0),
-                    decoration: new BoxDecoration(
-                      border: new Border.all(color: Color(0xFFFF5F49))
-                    ),
-                    child: Text(super.widget.equipmentData['category'], style: TextStyle(color: Color(0xFFFF5F49), fontSize: 10.0)),
-                  )
-                ],
+              Container(
+                margin: EdgeInsets.only(bottom: 4.0),
+                child: Row(
+                  children: <Widget>[
+                    Text(super.widget.equipmentData['name'], style: TextStyle(color: Color(0xFFFFFFFF), fontSize: 15.0)),
+                    Container(
+                      margin: const EdgeInsets.only(left: 10.0),
+                      padding: const EdgeInsets.all(2.0),
+                      decoration: new BoxDecoration(
+                        border: new Border.all(color: Color(0xFFFF5F49))
+                      ),
+                      child: Text(super.widget.equipmentData['category'], style: TextStyle(color: Color(0xFFFF5F49), fontSize: 10.0)),
+                    )
+                  ],
+                ),
               ),
               Row(
                 children: <Widget>[

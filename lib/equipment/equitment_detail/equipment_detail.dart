@@ -4,6 +4,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'equitment_detail_top.dart';
 import 'equipment_detail_desc.dart';
+import 'equipment_detail_tree.dart';
 
 class EquipmentDetail extends StatefulWidget {
   EquipmentDetail({Key key, this.equipmentId}): super(key: key);
@@ -29,7 +30,7 @@ class _EquipmentDetailState extends State<EquipmentDetail> {
       setState(() {
         _equipmentData = json.decode(response.body);
         print(_equipmentId);
-        print(_equipmentData);
+        // print(_equipmentData);
       });
     } else {
       throw Exception('Failed to load getCardListData');
@@ -68,6 +69,7 @@ class _EquipmentDetailState extends State<EquipmentDetail> {
                   height: 5.0,
                 ),
               ),
+              EquipmentDetailTree(equipmentData: _equipmentData['data'])
             ],
           ),
         )
