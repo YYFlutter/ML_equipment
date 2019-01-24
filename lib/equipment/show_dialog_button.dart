@@ -8,7 +8,10 @@ class ShowDialogButton extends StatefulWidget {
 
 class _ShowDialogButtonState extends State<ShowDialogButton> {
   void _showOverlay(BuildContext context) {
-    Navigator.of(context).push(TutorialOverlay());
+    Navigator.of(context).push(TutorialOverlay(
+      eqid: 3206,
+      eqids: [3110, 3206, 3201, 3202]
+    ));
   }
 
   @override

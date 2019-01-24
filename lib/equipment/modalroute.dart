@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'pageview.dart';
 
 class TutorialOverlay extends ModalRoute<void> {
+  TutorialOverlay({Key key, this.eqid, this.eqids});
+  final int eqid;
+  final List eqids;
+
   @override
   Duration get transitionDuration => Duration(milliseconds: 500);
 
@@ -26,6 +30,8 @@ class TutorialOverlay extends ModalRoute<void> {
       Animation<double> animation,
       Animation<double> secondaryAnimation,
       ) {
+        print(eqid);
+        print(eqids);
     // This makes sure that text and other content follows the material style
     return Material(
       type: MaterialType.transparency,
@@ -38,7 +44,7 @@ class TutorialOverlay extends ModalRoute<void> {
             Container(
               width: MediaQuery.of(context).size.width,
               height: MediaQuery.of(context).size.height - 100.0,
-              child: EquipmentPageView(),
+              child: EquipmentPageView(eqid: eqid, eqids: eqids),
             ),
             ButtonTheme(
               minWidth: 50.0,
@@ -53,24 +59,6 @@ class TutorialOverlay extends ModalRoute<void> {
             )
           ]
         )
-      ),
-    );
-  }
-
-  Widget _buildOverlayContent(BuildContext context) {
-    return Center(
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: <Widget>[
-          Text(
-            'This is a nice overlay',
-            style: TextStyle(color: Colors.white, fontSize: 30.0),
-          ),
-          RaisedButton(
-            onPressed: () => Navigator.pop(context),
-            child: Text('Dismiss'),
-          )
-        ],
       ),
     );
   }

@@ -6,16 +6,30 @@ void main() => runApp(MaterialApp(
     ));
 
 class EquipmentPageView extends StatefulWidget {
+  EquipmentPageView({Key key, this.eqid, this.eqids}): super(key: key);
+  final int eqid;
+  final List eqids;
   @override
   _EquipmentPageViewState createState() => _EquipmentPageViewState();
 }
 
 class _EquipmentPageViewState extends State<EquipmentPageView> {
-  final List _equipmentList = [3110, 3206, 3201, 3202];
+  List _equipmentList;
+  int _equipmentID;
+  @override
+  void initState(){
+    this._equipmentList = super.widget.eqids;
+    this._equipmentID = super.widget.eqid;
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return PageView.builder(
-      controller: PageController(viewportFraction: 0.8),
+      controller: PageController(
+        viewportFraction: 0.8,
+        initialPage: _equipmentList.indexOf(_equipmentID)
+      ),
       itemBuilder: (context, position) {
         return Padding(
           padding: EdgeInsets.symmetric(
