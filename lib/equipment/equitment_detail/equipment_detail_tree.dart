@@ -66,7 +66,7 @@ class _EquipmentDetailTreeState extends State<EquipmentDetailTree> {
       for(int index = 0; index < equipMentData['materialList'].length; index++){
         thirdLine.add(
           Container(
-            margin: EdgeInsets.only(left: 5.0, right: 5.0),
+            margin: EdgeInsets.only(left: 6.0, right: 6.0),
             child: equipMentUtil(equipMentData['materialList'][index], 2),
           )
         );
@@ -89,7 +89,7 @@ class _EquipmentDetailTreeState extends State<EquipmentDetailTree> {
           )
         ],
       );
-    }else{
+    } else {
       return Column(
         children: <Widget>[
           Container(
@@ -99,8 +99,37 @@ class _EquipmentDetailTreeState extends State<EquipmentDetailTree> {
         ],
       );
     }
+  }
 
-    
+  // 装备连线
+  Widget equipMentLine(double totalWidth,int equipmentNum){
+    double wTotalWidth = totalWidth * equipmentNum / 3;
+    return Container(
+      padding: EdgeInsets.only(top: 2.0),
+      width: wTotalWidth,
+      height: 20.0,
+      child: Stack(
+        children: <Widget>[
+          Divider(
+            height: 8.0,
+            color: Color(0xFF4B4E51),
+          ),
+          Positioned(
+            left: 0,
+            child: Text('|', style: TextStyle(color: Color(0xFF4B4E51)))
+          ),
+          Positioned(
+            right: 0,
+            child: Text('|', style: TextStyle(color: Color(0xFF4B4E51)))
+          ),
+          Positioned(
+            top: -10.0,
+            right: wTotalWidth / 2,
+            child: Text('|', style: TextStyle(color: Color(0xFF4B4E51)))
+          )
+        ],
+      )
+    );
   }
 
   Widget buildTreeList() {
@@ -108,10 +137,15 @@ class _EquipmentDetailTreeState extends State<EquipmentDetailTree> {
     Widget content;
     tiles.add(
       Container(
-        height: 80.0,
+        height: 60.0,
         child: equipMentUtil(_curEquipment, 1)
       )
     );
+
+    tiles.add(
+      equipMentLine(215.0, _materialList.length)
+    );
+
     if(_materialList!= null){
       List<Widget> lineSecond = [];
       for(var index = 0; index < _materialList.length; index++){
