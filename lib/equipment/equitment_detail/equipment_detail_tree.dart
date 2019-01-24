@@ -26,37 +26,103 @@ class _EquipmentDetailTreeState extends State<EquipmentDetailTree> {
     return buildTreeList();
   }
 
-  Widget equipMentUtil(Map equipMentData) {
+  // 装备图像
+  Widget equipMentUtil(Map equipMentData, int equipType) {
+    double coverSize = (equipType == 1 ? 40.0 : 28.0 );
+    double fontSize = (equipType == 1 ? 10.0 : 8.0 );
+    Widget nameText;
+    if(equipType == 1){
+      nameText = Text(equipMentData['name'], style: TextStyle(color: Color(0xFFFFFFFF), fontSize: fontSize));
+    } else {
+      List nameArray = equipMentData['name'].split(' ');
+      List<Widget> nameTextChilds = [];
+      for(int index = 0; index < nameArray.length; index++){
+        nameTextChilds.add(
+          Text(nameArray[index], style: TextStyle(color: Color(0xFFFFFFFF), fontSize: fontSize))
+        );
+      }
+      nameText = Column(
+        children: nameTextChilds,
+      );
+    }
     return Column(
       children: <Widget>[
         Container(
-          child: Image.network(equipMentData['image'], width: 40.0, height: 40.0),
+          child: Image.network(equipMentData['image'], width: coverSize, height: coverSize),
           margin: EdgeInsets.only(bottom: 5.0),
         ),
         Opacity(
           opacity: 0.4,
-          child: Text(equipMentData['name'], style: TextStyle(color: Color(0xFFFFFFFF), fontSize: 10.0)),
+          child: nameText,
         )
       ],
     );
+  }
+
+  // 二级分支
+  Widget equipMentSecondUtil(Map equipMentData) {
+    List<Widget> thirdLine = [];
+    if(equipMentData['materialList']!= null && equipMentData['materialList'].length > 0){
+      for(int index = 0; index < equipMentData['materialList'].length; index++){
+        thirdLine.add(
+          Container(
+            margin: EdgeInsets.only(left: 5.0, right: 5.0),
+            child: equipMentUtil(equipMentData['materialList'][index], 2),
+          )
+        );
+      }
+    }
+
+    if(thirdLine.length > 0){
+      return Column(
+        children: <Widget>[
+          Container(
+            height: 80.0,
+            child: equipMentUtil(equipMentData, 1),
+          ),
+          Container(
+            height: 80.0,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: thirdLine,
+            ),
+          )
+        ],
+      );
+    }else{
+      return Column(
+        children: <Widget>[
+          Container(
+            height: 160.0,
+            child: equipMentUtil(equipMentData, 1),
+          )
+        ],
+      );
+    }
+
+    
   }
 
   Widget buildTreeList() {
     List<Widget> tiles = [];
     Widget content;
     tiles.add(
-      equipMentUtil(_curEquipment)
+      Container(
+        height: 80.0,
+        child: equipMentUtil(_curEquipment, 1)
+      )
     );
     if(_materialList!= null){
       List<Widget> lineSecond = [];
       for(var index = 0; index < _materialList.length; index++){
+        // 第二层
         lineSecond.add(
-          equipMentUtil(_materialList[index])
+          equipMentSecondUtil(_materialList[index])
         );
       }
       tiles.add(
         Row(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: lineSecond,
         )
       );

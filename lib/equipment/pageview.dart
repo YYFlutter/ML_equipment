@@ -11,7 +11,7 @@ class EquipmentPageView extends StatefulWidget {
 }
 
 class _EquipmentPageViewState extends State<EquipmentPageView> {
-  final List _equipmentList = [3110, 3201, 3202];
+  final List _equipmentList = [3110, 3206, 3201, 3202];
   @override
   Widget build(BuildContext context) {
     return PageView.builder(

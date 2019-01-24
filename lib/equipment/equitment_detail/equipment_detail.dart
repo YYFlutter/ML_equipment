@@ -58,7 +58,7 @@ class _EquipmentDetailState extends State<EquipmentDetail> {
                 margin: EdgeInsets.only(top: 10.0, bottom: 10.0),
                 child: Divider(
                   color: Color(0xFF25272A),
-                  height: 5.0,
+                  height: 6.0,
                 ),
               ),
               EquipmentDetailDesc(equipmentData: _equipmentData['data']),
@@ -66,7 +66,7 @@ class _EquipmentDetailState extends State<EquipmentDetail> {
                 margin: EdgeInsets.only(top: 10.0, bottom: 10.0),
                 child: Divider(
                   color: Color(0xFF25272A),
-                  height: 5.0,
+                  height: 6.0,
                 ),
               ),
               EquipmentDetailTree(equipmentData: _equipmentData['data'])
