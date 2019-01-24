@@ -74,29 +74,29 @@ class _EquipmentDetailTreeState extends State<EquipmentDetailTree> {
     }
 
     if(thirdLine.length > 0){
-      return Column(
-        children: <Widget>[
-          Container(
-            height: 80.0,
-            child: equipMentUtil(equipMentData, 1),
-          ),
-          Container(
-            height: 80.0,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: thirdLine,
+      return Container(
+        height: 175,
+        child: Column(
+          children: <Widget>[
+            Container(
+              height: 60.0,
+              child: equipMentUtil(equipMentData, 1),
             ),
-          )
-        ],
+            equipMentLine(44, thirdLine.length),
+            Container(
+              height: 90.0,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: thirdLine,
+              ),
+            )
+          ],
+        )
       );
     } else {
-      return Column(
-        children: <Widget>[
-          Container(
-            height: 160.0,
-            child: equipMentUtil(equipMentData, 1),
-          )
-        ],
+      return Container(
+        height: 175.0,
+        child: equipMentUtil(equipMentData, 1),
       );
     }
   }
@@ -104,30 +104,46 @@ class _EquipmentDetailTreeState extends State<EquipmentDetailTree> {
   // 装备连线
   Widget equipMentLine(double totalWidth,int equipmentNum){
     double wTotalWidth = totalWidth * equipmentNum / 3;
-    return Container(
-      padding: EdgeInsets.only(top: 2.0),
-      width: wTotalWidth,
-      height: 20.0,
-      child: Stack(
-        children: <Widget>[
-          Divider(
+    List<Widget> lineArray = [];
+    lineArray.add(
+      Positioned(
+        top: 0.0,
+        right: wTotalWidth / 2,
+        child: Text('|', style: TextStyle(color: Color(0xFF4B4E51), fontSize: 10.0))
+      )
+    );
+    if(equipmentNum > 1){
+      lineArray.add(
+        Positioned(
+          top: 5.0,
+          left: 0.0,
+          child: Container(
+            width: wTotalWidth,
             height: 8.0,
-            color: Color(0xFF4B4E51),
-          ),
-          Positioned(
-            left: 0,
-            child: Text('|', style: TextStyle(color: Color(0xFF4B4E51)))
-          ),
-          Positioned(
-            right: 0,
-            child: Text('|', style: TextStyle(color: Color(0xFF4B4E51)))
-          ),
-          Positioned(
-            top: -10.0,
-            right: wTotalWidth / 2,
-            child: Text('|', style: TextStyle(color: Color(0xFF4B4E51)))
+            child: Divider(
+              height: 8.0,
+              color: Color(0xFF4B4E51),
+            ),
           )
-        ],
+        ),
+      );
+      lineArray.add(Positioned(
+        top: 8.0,
+        left: 0,
+        child: Text('|', style: TextStyle(color: Color(0xFF4B4E51), fontSize: 10.0))
+      ));
+      lineArray.add(Positioned(
+        top: 8.0,
+        right: 0,
+        child: Text('|', style: TextStyle(color: Color(0xFF4B4E51), fontSize: 10.0))
+      ));
+    }
+
+    return Container(
+      width: wTotalWidth,
+      height: 22.0,
+      child: Stack(
+        children: lineArray,
       )
     );
   }
