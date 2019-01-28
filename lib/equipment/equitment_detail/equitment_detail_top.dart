@@ -32,8 +32,8 @@ class _EquipmentDetailTopState extends State<EquipmentDetailTop> {
                 margin: EdgeInsets.only(bottom: 4.0),
                 child: Row(
                   children: <Widget>[
-                    Container(
-                      width: 105.0,
+                    LimitedBox(
+                      maxWidth: 128.0,
                       child: FittedBox(
                         fit: BoxFit.contain,
                         child: Text(

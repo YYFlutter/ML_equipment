@@ -18,11 +18,38 @@ class _EquipmentDetailDescState extends State<EquipmentDetailDesc> {
         opacity: 0.6,
         child:  Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Text(super.widget.equipmentData['statusEffect'], style: TextStyle(color: Color(0xFFFFFFFF), fontSize: 14.0)),
-          Text('unique: ${super.widget.equipmentData['unique']}, ${super.widget.equipmentData['uniquePassive']}', style: TextStyle(color: Color(0xFFFFFFFF), fontSize: 14.0))
-        ]
+        children: getMainColumnArray(super.widget.equipmentData)
       )
     );
+  }
+
+  List<Widget> getMainColumnArray(equipmentData){
+    List<Widget> rsArray=[];
+    if(equipmentData['statusEffect']!=null){
+      rsArray.add(getStatusEffect(equipmentData));
+    }
+    rsArray.add(getEquipmentDesc(equipmentData));
+    return rsArray;
+  }
+
+  Widget getStatusEffect(equipmentData) {
+    Widget resultWG=Divider();
+    if(equipmentData['statusEffect'] != null){
+      resultWG = Text(super.widget.equipmentData['statusEffect'], style: TextStyle(color: Color(0xFFFFFFFF), fontSize: 14.0));
+    }
+    return resultWG;
+  }
+
+  Widget getEquipmentDesc(equipmentData) {
+    Widget resultWG = Divider();
+    if(equipmentData['uniquePassive'] == null) {
+      equipmentData['uniquePassive'] = '';
+    }
+    if(equipmentData['unique'] != null) {
+      resultWG = Text('unique: ${equipmentData['unique']}, ${equipmentData['uniquePassive']}', style: TextStyle(color: Color(0xFFFFFFFF), fontSize: 14.0));
+    } else {
+      resultWG = Text('${equipmentData['uniquePassive']}', style: TextStyle(color: Color(0xFFFFFFFF), fontSize: 14.0));
+    }
+    return resultWG;
   }
 }
