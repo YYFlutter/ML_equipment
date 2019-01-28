@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 void main() => runApp(MaterialApp(
       home: EquipmentDetailTree(),
@@ -54,7 +55,15 @@ class _EquipmentDetailTreeState extends State<EquipmentDetailTree> {
     return Column(
       children: <Widget>[
         Container(
-          child: Image.network(equipMentData['image'], width: coverSize, height: coverSize),
+          // child: Image.network(equipMentData['image'], width: coverSize, height: coverSize),
+          child: CachedNetworkImage(
+            placeholder: CircularProgressIndicator(
+              valueColor: AlwaysStoppedAnimation<Color>(Colors.grey),
+            ),
+            imageUrl:equipMentData['image'],
+            width: coverSize,
+            height: coverSize,
+          ),
           margin: EdgeInsets.only(bottom: 5.0),
         ),
         Opacity(
